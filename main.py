@@ -1,8 +1,14 @@
 from flask import Flask
 from flask import jsonify
 import pandas as pd
+import wikipedia
 
 app = Flask(__name__)
+
+def implicit():
+        storage_client = storage.Client()
+        buckets = list(storage_client.list_buckets())
+        print(buckets)
 
 @app.route('/')
 def hello():
@@ -27,6 +33,12 @@ def html():
 def pandas_sugar():
     df = pd.read_csv("https://raw.githubusercontent.com/noahgift/sugar/master/data/education_sugar_cdc_2003.csv")
     return jsonify(df.to_dict())
+
+@app.route('/wikipedia/<company>')
+def wikipedia_route(company):
+    result = wikipedia.summary(company, sentences=10)
+    return result
+
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
