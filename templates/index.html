@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> Top Headlines</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="jumbotron" style="color:black">
+    <h1 style="color:black">
+        NEWS API ON GCP
+    </h1>
+</div>
+
+<div align = "center">
+<h4>Choose News Source</h4>
+<br>
+<form method="POST" action="/result">
+    <select name="comp_select" class="selectpicker">
+        {% for o in data %}
+        <option value="{{ o.name }}">{{ o.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit" class="btn-info">
+        Go
+    </button>
+</form>
+</div>
+</body>
+</html>

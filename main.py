@@ -1,43 +1,35 @@
-from flask import Flask
+from flask import Flask, flash, redirect, render_template, request, url_for
 from flask import jsonify
-import pandas as pd
-import wikipedia
+from newsapi import NewsApiClient
 
 app = Flask(__name__)
 
-def implicit():
-        storage_client = storage.Client()
-        buckets = list(storage_client.list_buckets())
-        print(buckets)
-
 @app.route('/')
-def hello():
-    """Return a friendly HTTP greeting."""
-    return 'Hello I like to make AI Apps' + ' Test CloudBuild!'
+def index():
+    return render_template(
+        'index.html',
+        data=[{'name':'cnn'}, {'name':'bbc-news'},
+            {'name':'reuters'},{'name':'google-news'}])
 
-@app.route('/name/<value>')
-def name(value):
-    val = {"value": value}
-    return jsonify(val)
+@app.route("/result" , methods=['GET', 'POST'])
+def result():
+    newsapi = NewsApiClient(api_key="3ce897ffb4bc49bcb5ca9dd364e9a79e")
+    news_source = request.form.get('comp_select')
+    topheadlines = newsapi.get_top_headlines(sources=news_source)
+    articles = topheadlines['articles']
+    
+    desc = []
+    news = []
+    img = []
 
-@app.route('/html')
-def html():
-    """Returns some custom HTML"""
-    return """
-    <title>This is a Hello World World Page</title>
-    <p>Hello</p>
-    <p><b>World</b></p>
-    """
-
-@app.route('/pandas')
-def pandas_sugar():
-    df = pd.read_csv("https://raw.githubusercontent.com/noahgift/sugar/master/data/education_sugar_cdc_2003.csv")
-    return jsonify(df.to_dict())
-
-@app.route('/wikipedia/<company>')
-def wikipedia_route(company):
-    result = wikipedia.summary(company, sentences=10)
-    return result
+    for i in range(len(articles)):
+        myarticles = articles[i]
+        news.append(myarticles['title'])
+        desc.append(myarticles['description'])
+        img.append(myarticles['urlToImage'])
+    mylist = zip(news, desc, img)
+ 
+    return render_template('result.html', context=mylist)
 
 
 if __name__ == '__main__':
