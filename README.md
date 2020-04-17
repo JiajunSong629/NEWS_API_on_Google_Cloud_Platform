@@ -2,7 +2,7 @@
 
 Next projects:
 
-[jupyter workflows using docker container](https://github.com/JiajunSong629/jupyter-workflows-using-docker-container)
+[Jupyter workflows using Docker Container](https://github.com/JiajunSong629/jupyter-workflows-using-docker-container)
 
 [Spark jobs workflow on AWS EMR](https://github.com/JiajunSong629/AWS_EMR_Spark_Workflow)
 
