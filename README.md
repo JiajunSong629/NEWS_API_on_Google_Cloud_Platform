@@ -1,6 +1,10 @@
-# NEWS API on GCP
+# 20Spring: ECE590.24 Data Analysis at Scale in the Cloud
 
-## Introduction
+Next projects:
+[jupyter workflows using docker container](https://github.com/JiajunSong629/jupyter-workflows-using-docker-container)
+[Spark jobs workflow on AWS EMR](https://github.com/JiajunSong629/AWS_EMR_Spark_Workflow)
+
+## Continuous Delivery of Flask Application on GCP
 
 In this individual project, I rebuild my former project of News API Endpoint on Google Cloud Platform.
 It also enables CloudBuild to deploy continuous delivery of Flask Application.
