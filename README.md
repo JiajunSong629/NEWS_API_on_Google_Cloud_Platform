@@ -1,7 +1,9 @@
 # 20Spring: ECE590.24 Data Analysis at Scale in the Cloud
 
 Next projects:
+
 [jupyter workflows using docker container](https://github.com/JiajunSong629/jupyter-workflows-using-docker-container)
+
 [Spark jobs workflow on AWS EMR](https://github.com/JiajunSong629/AWS_EMR_Spark_Workflow)
 
 ## Continuous Delivery of Flask Application on GCP
