@@ -1,4 +1,4 @@
-# 20Spring: ECE590.24 Data Analysis at Scale in the Cloud
+# ECE590.24 Data Analysis at Scale in the Cloud
 
 Next projects:
 
